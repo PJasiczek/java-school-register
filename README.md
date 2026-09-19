@@ -1,16 +1,21 @@
 # School Register
-> This repository contains code from the app, which has the function of a school journal for students, parents, teachers and educators.
+> A Java Swing desktop app for an electronic school register — separate logins and views for pupils, teachers and educators, backed by a MySQL database. Built for a university course.
 
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Features](#features)
 * [Status](#status)
 * [Contact](#contact)
 
 ## General info
-Electronic school register application created for the needs of laboratory classes.
+Models a school's day-to-day records — classes, subjects, grades, notes and absences — with role-based logins for pupils, teachers, and educators.
+
+* `Users` – a `Person` base class with `Pupil`, `Teacher`, `Educator` and `Administrator` subclasses
+* `System` – domain entities: `Class`, `Subject`, `Grade`, `Note`, `Absence`
+* `GUI` – Swing panels for each role (login screens, grading, notes, teacher search, and more)
+* `Register` – the app entry point and the MySQL connection layer
+* `database/school_register.sql` – the MySQL schema
 
 ## Screenshots
 ![Example screenshot](./img/screenshot1.png)
@@ -20,19 +25,11 @@ Electronic school register application created for the needs of laboratory class
 ![Example screenshot](./img/screenshot5.png)
 
 ## Setup
-To connect to the database from java application, we need to add a jar library to the project named:
-* _mysql-connector-java-8.0.13_
-
-The second library located in the _/resources_ directory is responsible for things related to the table located in the main application window. This jar library called:
-* _rs2xml_
-
-## Features
-To-do list:
-* Add more functionality for the pupils, teacher and educator,
-* Make functionality for the administrator.
+1. Import `database/school_register.sql` into a local MySQL/MariaDB instance named `SchoolRegister`.
+2. Add the two jars in `/resources` to the project: `mysql-connector-java-8.0.13` (DB driver) and `rs2xml` (renders query results in the app's tables).
+3. `SQLConnection.java` connects to `jdbc:mysql://localhost/SchoolRegister` as `root` with no password — update this for your own environment.
 
 ## Status
-Project is: _in progress_.
+**Archived** — not actively maintained.
 
-## Contact
-Created by [@PJasiczek](https://www.piotrjasiczek.pl/) - feel free to contact me!
+Written in early 2019 for a university course. Development stopped with the pupil, teacher and educator roles working; the planned administrator role and a few smaller features were never implemented.
